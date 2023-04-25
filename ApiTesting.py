@@ -12,4 +12,4 @@ json_response = json.loads(response.text)
 # Fetch json value
 total = jsonpath.jsonpath(json_response, 'total')
 print(total)
-# print(json_response)
+print(response)
