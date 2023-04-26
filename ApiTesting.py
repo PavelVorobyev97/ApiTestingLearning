@@ -5,8 +5,7 @@ import jsonpath
 def testGetRequest():
     url = 'https://reqres.in/api/users?page=2'
     # Get response
-    response = requests.get(url)
-
+    response = requests.get(url)    
     # Parse JSON 
     json_response = json.loads(response.text)
 
@@ -26,7 +25,19 @@ def testDelete():
     print("Delete /users/2 code:" + str(response.status_code))
     
     # Assert status code
-    assert response.status_code == 204    
+    assert response.status_code == 204
+
+def testPostAddUser():
+    url = 'https://reqres.in/api/users'
+    message = open('testData/createUserData', 'rb')
+    response = requests.post(url, message)
+
+    print("Post api/users code:" + str(response.status_code))
+    # print(response.content) 
+    
+    # Assert status code
+    assert response.status_code == 201   
 
 testGetRequest()
 testDelete()
+testPostAddUser()
