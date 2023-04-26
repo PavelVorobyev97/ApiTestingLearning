@@ -29,8 +29,10 @@ def testDelete():
 
 def testPostAddUser():
     url = 'https://reqres.in/api/users'
-    message = open('testData/createUserData', 'rb')
-    response = requests.post(url, message)
+    file = open('testData/createUserData', 'rb')
+    json_message = file.read()
+    print(json_message)
+    response = requests.post(url, json_message)
 
     print("Post api/users code:" + str(response.status_code))
     # print(response.content) 
